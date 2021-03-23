@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fe344ac8b1fd20549a7d20759fa80d7c
+timeCreated: 1539628092
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KoreanSNBRL
+  fontNames:
+  - KoreanSNBRL
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
