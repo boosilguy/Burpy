@@ -6,3 +6,5 @@
 <p>Classification 결과로 Node.js에서 UnityWebRequest 응답을 받아, Markless Based로 음료 주위에 음료 정보 및 사용자들의 평가가 렌더링됨.</p>
 
 [![Burpy! (Unity AR App)](http://img.youtube.com/vi/SZdCRuuuBhg/0.jpg)](http://www.youtube.com/watch?v=SZdCRuuuBhg "Burpy!")
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/6Az2cNU7gUw" frameborder="0" gesture="media" allowfullscreen=""></iframe>
