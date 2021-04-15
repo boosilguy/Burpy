@@ -5,4 +5,5 @@
 <p>UnityWebRequest에 음료 이미지 정보를 동봉하여, Image Classification Server (Django)로 전송.</p>
 <p>Classification 결과로 Node.js에서 UnityWebRequest 응답을 받아, Markless Based로 음료 주위에 음료 정보 및 사용자들의 평가가 렌더링됨.</p>
 <h1>프로젝트 영상</h1>
+
 [![Burpy! (Unity AR App)](http://img.youtube.com/vi/SZdCRuuuBhg/0.jpg)](http://www.youtube.com/watch?v=SZdCRuuuBhg "Burpy!")
