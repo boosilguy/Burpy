@@ -57,4 +57,5 @@
 <a href="https://github.com/boosilguy/BurpyICHeroku">Burpy Image Classification Server</a>
 
 <h2>프로젝트 영상</h2>
+
 [![Burpy! (Unity AR App)](http://img.youtube.com/vi/SZdCRuuuBhg/0.jpg)](http://www.youtube.com/watch?v=SZdCRuuuBhg "Burpy!")
