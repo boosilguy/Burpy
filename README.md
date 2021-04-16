@@ -27,30 +27,34 @@
 <p>Unity에 Vuforia의 Markless Package를 이용하여 개발하였습니다. 최초 스캔한 이미지를 UnityWebRequest객체로 만들어 Classification 서버로 Request를 보냅니다. 그 후, Classification 서버는 위키 서버에 Request를 요청하고, 위키 서버는 Response (e.g. 음료 이름, 맛, 추천 등등)를 만들어 UnityWebRequest 객체의 프로퍼티로 돌려줍니다. 직후, 스캔했던 음료의 Feature를 기반으로 AR 인터페이스에 UnityWebRequest 프로퍼티에 담긴 음료 정보를 렌더링합니다.</p>
 <p>새로운 음료 이미지 및 학습 강화용 이미지는 Google Drive에 다이렉트로 접근하여, Training Data 디렉토리에 저장하도록 설계하였습니다. 이 과정에서 Google Drive API와 Oauth2를 사용하였습니다.
 
-![Burpy Web Request Model](https://user-images.githubusercontent.com/30020288/115008260-def17e80-9ee5-11eb-87b3-c0491de9417f.png)
+<h3>음료 스캔</h3>
+
+![Burpy Web Request Img Regist Model](https://user-images.githubusercontent.com/30020288/115040355-50442800-9f0c-11eb-8be4-e726e6cad2f6.png)
 
 <ol>
-  <li>Unity로부터 이미지 사진이 포함된 Request를 Image Classification의 URL로부터 수용합니다.</li>
-  <li>Request를 파싱하여, 이미지 파일의 배열을 Classification의 Input으로 사용합니다.</li>
-  <li>Classification의 5순위 결과를 반환하여, Node.js 서버 (음료 위키 서버)에 전달합니다.</li>
+  <li>Unity로부터 음료를 스캔하여, 해당 이미지 사진을 Image Classification 서버에 전송합니다.</li>
+  <li>Image Classification 서버와 위키 서버가 커뮤니케이션 후, 위키 서버로부터 음료 정보가 담긴 Response를 받습니다.</li>
+  <li>Vuforia Object를 통해, 음료 정보가 증강하여 렌더링됩니다.</li>
+  <li>사용자는 렌더링된 AR 인터페이스를 통해, 위키 홈페이지로 접속하거나, 모델 강화를 위해 직전에 촬영한 이미지를 학습 데이터로 제출할 수 있습니다.</li>
+</ol>
+
+<h3>음료 등록</h3>
+
+![Burpy Web Request Model](https://user-images.githubusercontent.com/30020288/115040366-52a68200-9f0c-11eb-86ab-9a30c763a08c.png)
+
+<ol>
+  <li>음료 스캔 직후, 해당 음료가 있는지 App을 통해 검색합니다.</li>
+  <li>이 때, 위키 서버와 Request/Response를 받으며 관련 음료 리스트를 사용자에게 App으로 제공합니다.</li>
+  <li>만약, 스캔한 음료와 매치되는 음료가 있다면 사용자는 해당 음료가 명시된 버튼을 누르게 되고, 스캔 직후의 이미지는 학습 데이터로 제출됩니다.</li>
+  <li>리스트에 없다면, 음료 등록을 위해서 위키 서버가 브라우저를 통해 연결됩니다. 사용자는 브라우저를 통해 음료 정보를 입력하고, 입력 완료 직후, 스캔 직후 이미지가 학습 데이터로 제출됩니다.</li>
 </ol>
 
 <h2>Behind Story</h2>
-<p>아무래도 Heroku 서버 규모가 Free Account이다보니, 서버 역할의 제한이 많았습니다. 기존 계획에는 모델 업데이트도 추가할 예정이었으나, Request만 받으면 서버가 버티질 못하고 뻗었습니다. 당시 프로젝트 마감 기간일 뿐더러, ACM VRST2018에 투고할 Short Paper를 준비하고 있어 클라우드 이전을 고려하지 못한게 아쉬움으로 남았습니다. 프론트-백엔드 프로그래밍이 미숙하기도 하여, 모델 업데이트는 수기로 업데이트하는 방향으로 프로젝트를 진행했습니다.</p>
-<p>모델의 Training Data는 Google Drive에서 관리하도록 설정하였습니다.</p>
+<p>당시 Unity2017을 사용하였습니다. 이 시기는 기존에 사용하던 WWW 방식 대신, UnityWebRequest 방식을 권고하던 시기로 기억됩니다. 로직의 길이도 UnityWebRequest가 더 간결하고 (짧고), Json을 직접 Raw하게 작업하는 WWW과 달리, UnityWebRequest는 객체 내 변수로 Request를 꾸릴 수 있어서 더욱 편리하였습니다.</p>
+<p>Google Oauth2를 이용하면서, Google Playground라는 별도 공간이 있다는 것을 처음 알았습니다. API 다양하게 테스트하라고 놀이터까지 주는 갓글...</p>
 
 <h2>Check This</h2>
-<a href="https://github.com/boosilguy/Burpy">Burpy Unity App</a>
+<a href="https://github.com/boosilguy/BurpyICHeroku">Burpy Image Classification Server</a>
 
-
-
-
-<h1>Burpy Unity Client (2018)</h1>
-<h3>Unity + Vuforia</h3>
-<h4>이게 무슨 음료지?</h4>
-<p>음료 정보를 실시간 증강현실로 렌더링하여, 사용자에게 정보를 제공하는 Unity 앱.</p>
-<p>UnityWebRequest에 음료 이미지 정보를 동봉하여, Image Classification Server (Django)로 전송.</p>
-<p>Classification 결과로 Node.js에서 UnityWebRequest 응답을 받아, Markless Based로 음료 주위에 음료 정보 및 사용자들의 평가가 렌더링됨.</p>
-<h1>프로젝트 영상</h1>
-
+<h2>프로젝트 영상</h2>
 [![Burpy! (Unity AR App)](http://img.youtube.com/vi/SZdCRuuuBhg/0.jpg)](http://www.youtube.com/watch?v=SZdCRuuuBhg "Burpy!")
