@@ -24,7 +24,8 @@
 <p>스캔한 상품이 새로운 상품이라면, 최초 리뷰어가 될 수 있습니다. 이 경우 스캔 직후, 새로운 음료 추가 인터페이스로 위키 서버에 접속하여 음료를 등록할 수 있습니다.</p>
 
 <h2>Detail</h2>
-Unity에 Vuforia의 Markless Package를 이용하여 개발하였습니다. 최초 스캔한 이미지를 `UnityWebRequest`객체로 만들어 Classification 서버로 Request를 보냅니다. 그 후, Classification 서버는 위키 서버에 Request를 요청하고, 위키 서버는 Response (e.g. 음료 이름, 맛, 추천 등등)를 만들어 UnityWebRequest 객체의 프로퍼티로 돌려줍니다.
+<p>Unity에 Vuforia의 Markless Package를 이용하여 개발하였습니다. 최초 스캔한 이미지를 UnityWebRequest객체로 만들어 Classification 서버로 Request를 보냅니다. 그 후, Classification 서버는 위키 서버에 Request를 요청하고, 위키 서버는 Response (e.g. 음료 이름, 맛, 추천 등등)를 만들어 UnityWebRequest 객체의 프로퍼티로 돌려줍니다. 직후, 스캔했던 음료의 Feature를 기반으로 AR 인터페이스에 UnityWebRequest 프로퍼티에 담긴 음료 정보를 렌더링합니다.</p>
+<p>새로운 음료 이미지 및 학습 강화용 이미지는 Google Drive에 다이렉트로 접근하여, Training Data 디렉토리에 저장하도록 설계하였습니다. 이 과정에서 Google Drive API와 Oauth2를 사용하였습니다.
 
 ![Burpy Web Request Model](https://user-images.githubusercontent.com/30020288/115008260-def17e80-9ee5-11eb-87b3-c0491de9417f.png)
 
