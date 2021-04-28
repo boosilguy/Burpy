@@ -54,7 +54,12 @@
 <p>Google Oauth2를 이용하면서, Google Playground라는 별도 공간이 있다는 것을 처음 알았습니다. API 다양하게 테스트하라고 놀이터까지 주는 갓글...</p>
 
 <h2>Check This</h2>
-<a href="https://github.com/boosilguy/BurpyICHeroku">Burpy Image Classification Server</a>
+<ol>
+  <li><a href="https://docs.google.com/document/d/17fB05skh4-5_dkhD0XkSKak9RyiePswib4cddcb-lu0/edit?usp=sharing">개발 내용 문서</a></li>
+  <li><a href="https://github.com/boosilguy/BurpyICHeroku">Burpy Image Classification Server</a></li>
+</ol>
+
+
 
 <h2>프로젝트 영상</h2>
 
